@@ -32,6 +32,13 @@ public class ClienteRestController {
 	public ResponseEntity<Iterable<Cliente>> buscarTodos() {
 		return ResponseEntity.ok(clienteService.buscarTodos());
 	}
+		@GetMapping("/{id}/saudacao")
+		public ResponseEntity<String> saudacao(@PathVariable Long id) {
+			Cliente cliente = clienteService.buscarPorId(id);
+			String msg = "Bem-vindo, " + cliente.getNome() + "! 🚀";
+			return ResponseEntity.ok(msg);
+		}
+
 
 	@GetMapping("/{id}")
 	public ResponseEntity<Cliente> buscarPorId(@PathVariable Long id) {
